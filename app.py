@@ -24,8 +24,7 @@ def show_predict_page():
     input_values = {}
 
     for col in columns:
-        if col.lower() not in ['discount', 'create_date', 'quote_amount', 'total_cost']:
-            input_values[col] = st.sidebar.number_input(f"{col.capitalize().replace('_', ' ')}", value=0.0)
+        input_values[col] = st.sidebar.number_input(f"{col.capitalize().replace('_', ' ')}", value=1.0)
 
     # When 'Predict' button is clicked
     if st.sidebar.button("Predict Total Cost"):
@@ -34,7 +33,7 @@ def show_predict_page():
         model = load_model()
         try:
             prediction = model.predict(input_df)
-            st.write(f"### Predicted Total Cost: ₹ {prediction[0]:,.4f}")
+            st.write(f"### Predicted Total Cost: ₹ {prediction[0]:,.2f}")
         except Exception as e:
             st.error(f"Prediction error: {e}")
 
@@ -45,3 +44,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# 11879982
