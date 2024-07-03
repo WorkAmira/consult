@@ -34,12 +34,12 @@ def show_predict_page():
         model = load_model()
         try:
             prediction = model.predict(input_df)
-            st.write(f"### Predicted Total Cost: ${prediction[0]:,.2f}")
+            st.write(f"### Predicted Total Cost: ₹ {prediction[0]:,.4f}")
         except Exception as e:
             st.error(f"Prediction error: {e}")
 
 def main():
-    st.set_page_config(page_title="Total Cost Prediction", layout="wide")
+    st.set_page_config(page_title="Total Quote Amount Prediction", layout="wide")
 
     show_predict_page()
 
